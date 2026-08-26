@@ -4,7 +4,7 @@ This repository implements the provided Mini Project: Drug Type Prediction using
 
 ## Project structure
 
-- `Drug_Type_Prediction_FIXED.ipynb` — corrected Task 1–11 implementation
+- `Drug_Type_Prediction.ipynb` — complete Task 1–10 implementation
 - `app.py` — Streamlit prediction UI
 - `requirements.txt` — Python dependencies
 - `.gitignore` — excludes credentials and generated Python files
@@ -17,33 +17,40 @@ Place the professor's `drug200.csv` file in:
 
 or in the notebook working directory.
 
-## Key corrections from the previous implementation
+## Tasks
 
-1. Consistent 80/20 stratified split: 160 training / 40 testing.
-2. No preprocessing fitted on the full dataset before the split.
-3. SMOTENC is used for mixed numerical/categorical augmentation.
-4. Exactly 1,000 augmented training samples are generated: 840 synthetic + 160 original training samples.
-5. Target labels remain `DrugA`, `DrugB`, `DrugC`, `DrugX`, `DrugY`.
-6. One complete preprocessing + model pipeline is saved.
-7. Streamlit receives raw patient values and uses the same pipeline as training.
-8. Probability labels use `model.classes_`, preventing class-order mistakes.
-9. The model comparison table contains each model once; the best model is selected separately.
-10. Tuning results are reported exactly as measured, including negative or zero improvement.
+1. **Task 1 — Import and Load the Data**  
+   Load the dataset and explore it using `.head()`, `.info()`, `.describe()`, `.shape`, and `.columns`.
+
+2. **Task 2 — Exploratory Data Analysis (EDA)**  
+   Perform numerical and categorical visualization, analyze the Drug distribution, study feature relationships, generate a correlation heatmap, and summarize findings.
+
+3. **Task 3 — Missing Values and Outlier Treatment**  
+   Check missing values, detect outliers using Boxplots, IQR and Z-score methods, and treat outliers when necessary.
+
+4. **Task 4 — Feature Engineering and Preprocessing**  
+   Encode categorical variables, check skewness, apply transformations when required, scale numerical features, and split the dataset into training and testing sets.
+
+5. **Task 5 — Data Augmentation**  
+   Apply tabular data augmentation to generate at least 800 synthetic samples and obtain a final dataset of at least 1,000 samples. Compare performance before and after augmentation.
+
+6. **Task 6 — Model Building**  
+   Train and evaluate multiple classifiers including Logistic Regression, Decision Tree, Random Forest, SVM, KNN, Naive Bayes, AdaBoost, Gradient Boosting, XGBoost, Extra Trees, Voting, and Stacking Classifiers.
+
+7. **Task 7 — Model Evaluation and Overfitting Check**  
+   Evaluate Accuracy, Precision, Recall, F1 Score, ROC-AUC, Confusion Matrix, and Classification Report. Compare training and testing performance.
+
+8. **Task 8 — Hyperparameter Tuning**  
+   Use GridSearchCV or RandomizedSearchCV to optimize the best-performing models and record the best hyperparameters and performance improvement.
+
+9. **Task 9 — Model Comparison**  
+   Compare the models using training accuracy, testing accuracy, precision, recall, F1 score, augmentation usage, and overfitting status, then identify the best model.
+
+10. **Task 10 — Feature Importance Analysis**  
+    Identify the factors influencing drug selection using Feature Importance, Permutation Importance, and optional SHAP analysis.
 
 ## Run the Streamlit app
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
-```
-
-The file `best_drug_prediction_pipeline.pkl` must be available in the project directory (or in the configured model folder).
-
-## Security
-
-Do not place ngrok tokens, API keys, passwords, or Google credentials in the notebook or GitHub repository.
-The previous notebook contained an ngrok token; it should be revoked/rotated before public upload.
-
-## Academic limitation
-
-This is an educational machine-learning mini-project based on a small dataset. Model results are not clinical validation and should not be presented as a real-world medical prescribing system.
