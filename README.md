@@ -11,11 +11,7 @@ This repository implements the provided Mini Project: Drug Type Prediction using
 
 ## Required dataset
 
-Place the professor's `drug200.csv` file in:
-
-`/content/drive/MyDrive/ML Project/drug200.csv`
-
-or in the notebook working directory.
+Use `drug200.csv` file in attached here
 
 ## Tasks
 
